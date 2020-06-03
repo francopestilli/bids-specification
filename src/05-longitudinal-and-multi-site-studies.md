@@ -1,18 +1,18 @@
-# Longitudinal studies with multiple sessions (visits)
+# Longitudinal and multi-site studies
 
 Multiple sessions (visits) are encoded by adding an extra layer of directories
-and file names in the form of `ses-<session_label>`. Session label can consist
+and file names in the form of `ses-<label>`. Session label can consist
 only of alphanumeric characters `[a-zA-Z0-9]` and should be consistent across
 subjects. If numbers are used in session labels we recommend using zero padding
 (for example `ses-01`, `ses-11` instead of `ses-1`, `ses-11`). This makes
 results of alphabetical sorting more intuitive. Acquisition time of session can
 be defined in the sessions file (see below for details).
 
-The extra session layer (at least one `/ses-<session_label>` subfolder) should
+The extra session layer (at least one `/ses-<label>` subfolder) should
 be added for all subjects if at least one subject in the dataset has more than
 one session. Skipping the session layer for only some subjects in the dataset is
-not allowed. If a `/ses-<session_label>` subfolder is included as part of the
-directory hierarchy, then the same `ses-<session_label>` tag must also be
+not allowed. If a `/ses-<label>` subfolder is included as part of the
+directory hierarchy, then the same `ses-<label>` tag must also be
 included as part of the file names themselves.
 
 ```Text
@@ -64,13 +64,13 @@ CHANGES
 Template:
 
 ```Text
-sub-<participant_label>/
-    sub-<participant_label>_sessions.tsv
+sub-<label>/
+    sub-<label>_sessions.tsv
 ```
 
 Optional: Yes
 
-In case of multiple sessions there is an option of adding an additional
+In case of multiple sessions there is an option of adding additional
 participant key files describing variables changing between sessions. In such
 case one file per participant should be added. These files need to include
 compulsory `session_id` column and describe each session by one and only one
@@ -90,8 +90,8 @@ ses-followup  2009-06-17T13:45:30 110
 
 This version of the BIDS specification does not explicitly cover studies with
 data coming from multiple sites or multiple centers (such extension is planned
-in BIDS 2.0.0). There are however ways to model your data without any loss in
-terms of metadata.
+in [BIDS `2.0`](https://docs.google.com/document/d/1LEgsMiisGDe1Gv-hBp1EcLmoz7AlKj6VYULUgDD3Zdw/)).
+There are however ways to model your data without any loss in terms of metadata.
 
 ### Treat each site/center as a separate dataset
 
